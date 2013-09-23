@@ -22,5 +22,5 @@ int main (int argc, char ** argv)
 	char * revstr = rev_str (argv[1]);
 	puts (revstr);
 	free (revstr);
-  return 0;
+	return 0;
 }
