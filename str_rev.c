@@ -7,7 +7,7 @@
 char * rev_str (char * str)
 {
 	int len = strlen (str) -1;
-	char * tmp = (char * ) malloc (sizeof (char ) + len);
+	char * tmp = (char * ) malloc (len * sizeof (char ));
 	tmp[len] = '\0';
 	do {
 		tmp[len--] = *str;
