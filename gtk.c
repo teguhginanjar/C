@@ -2,6 +2,23 @@
 
 GtkWidget * window = NULL;
 
+
+static void 
+show_dialog_msg ()
+{
+	const char * authors [] = { "Teguh Ginanjar", "Pahrudin", NULL };
+	GtkWidget * dialog = gtk_about_dialog_new ();
+	//GdkPixbuf * logo = gdk_pixbuf_new_from_file ("./images/pic.png", NULL);
+	gtk_about_dialog_set_copyright (GTK_ABOUT_DIALOG (dialog), "(C) Delameta Bilano, 2013");
+	//gtk_about_dialog_set_logo (GTK_ABOUT_DIALOG (dialog), logo);
+	gtk_about_dialog_set_version (GTK_ABOUT_DIALOG (dialog), "0.1");
+	gtk_about_dialog_set_authors (GTK_ABOUT_DIALOG (dialog), authors);
+	gtk_about_dialog_set_website (GTK_ABOUT_DIALOG (dialog), "tghgnjr@gmail.com");
+	gtk_dialog_run (GTK_DIALOG (dialog));
+	gtk_widget_destroy (dialog);
+}
+
+
 GtkWidget * 
 create_window (void)
 {
@@ -60,6 +77,7 @@ create_window (void)
 	
 	
 	g_signal_connect (itemquit, "button-press-event", G_CALLBACK (gtk_main_quit), NULL);
+	g_signal_connect (itemabout, "button-press-event", G_CALLBACK (show_dialog_msg), NULL);
 	
 	//gtk_container_add (GTK_CONTAINER (w), mbar);
 
@@ -74,9 +92,11 @@ create_window (void)
 	gtk_box_pack_start (GTK_BOX (menubarbox), mbar, FALSE, TRUE, 0);
 	
 		
+	gtk_window_set_position (GTK_WINDOW (w), GTK_WIN_POS_CENTER);
 	gtk_widget_show_all (mbar);
 	
 	g_signal_connect (w, "destroy", G_CALLBACK (gtk_main_quit), NULL);
+	
 	
 	return w;
 }
