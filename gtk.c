@@ -88,10 +88,12 @@ create_window (void)
 	gtk_container_add (GTK_CONTAINER (w), mbox);
 	gtk_box_pack_start (GTK_BOX (mbox), menubarbox, FALSE, TRUE, 0);
 	gtk_box_pack_start (GTK_BOX (mbox), contenbox, FALSE, TRUE, 0);
-	//gtk_container_add (GTK_CONTAINER (menubarbox), mbar);
+
+
 	gtk_box_pack_start (GTK_BOX (menubarbox), mbar, FALSE, TRUE, 0);
-	
-		
+	GtkWidget * sep = gtk_separator_new (GTK_ORIENTATION_HORIZONTAL);
+	gtk_box_pack_start (GTK_BOX (contenbox), sep, FALSE, TRUE, 0);
+			
 	gtk_window_set_position (GTK_WINDOW (w), GTK_WIN_POS_CENTER);
 	gtk_widget_show_all (mbar);
 	
@@ -113,4 +115,4 @@ main (int argc, char ** argv)
 	
 	gtk_main ();
 	return 0;
-}
+}j
