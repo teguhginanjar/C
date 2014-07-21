@@ -1,17 +1,12 @@
 #include <gtk/gtk.h>
 
-
-
-GtkWidget * window;
-
-
-
+GtkWidget * window = NULL;
 
 GtkWidget * 
 create_window (void)
 {
 	GtkWidget * w = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-	gtk_window_set_default_size (GTK_WINDOW (w), 400, -1);
+	gtk_window_set_default_size (GTK_WINDOW (w), 400, 200);
 	
 	
 	GtkWidget * mbar = gtk_menu_bar_new ();
@@ -38,13 +33,10 @@ create_window (void)
 			  * itemsave, 
 			 
 			  * itemquit, 
-			 
-			  
+					  
 			  * itemabout;
 			  
 			  
-	
-	GtkAccelGroup * group = gtk_accel_group_new (); 
 	itemopen = gtk_menu_item_new_with_label ("Open");
 	itemsave = gtk_menu_item_new_with_label ("Save");
 	itemquit = gtk_menu_item_new_with_label ("Quit");
@@ -68,26 +60,18 @@ create_window (void)
 	
 	
 	g_signal_connect (itemquit, "button-press-event", G_CALLBACK (gtk_main_quit), NULL);
+	
+	//gtk_container_add (GTK_CONTAINER (w), mbar);
 
+	GtkWidget * mbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+	GtkWidget * menubarbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
+	GtkWidget * contenbox = gtk_box_new (GTK_ORIENTATION_VERTICAL, 0);
 	
-	/*
-	GtkWidget * menubar;
-	GtkWidget * File, * Preferences;
-	GtkWidget * itemopen, * itemsave, * itemquit;
-	GtkWidget * itemedit;
-	
-	menubar = gtk_menu_bar_new ();
-	File = gtk_menu_new ();
-	Preferences = gtk_menu_new ();
-	
-	itemopen = gtk_menu_item_new_with_mnemonic ("_File");
-	
-	
-	gtk_menu_shell_append (GTK_MENU_SHELL (menubar), File);
-	gtk_menu_item_set_submenu (GTK_MENU_ITEM (File), itemopen);
-	*/
-	
-	gtk_container_add (GTK_CONTAINER (w), mbar);
+	gtk_container_add (GTK_CONTAINER (w), mbox);
+	gtk_box_pack_start (GTK_BOX (mbox), menubarbox, FALSE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX (mbox), contenbox, FALSE, TRUE, 0);
+	//gtk_container_add (GTK_CONTAINER (menubarbox), mbar);
+	gtk_box_pack_start (GTK_BOX (menubarbox), mbar, FALSE, TRUE, 0);
 	
 		
 	gtk_widget_show_all (mbar);
@@ -96,7 +80,6 @@ create_window (void)
 	
 	return w;
 }
-
 
 
 int 

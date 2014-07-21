@@ -4,9 +4,6 @@
 #include <unistd.h>
 
 
-
-
-
 char * 
 tgstrdup (const char * fmt, ...)
 {
