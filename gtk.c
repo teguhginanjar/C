@@ -6,7 +6,7 @@ GtkWidget * window = NULL;
 static void 
 show_dialog_msg ()
 {
-	const char * authors [] = { "Teguh Ginanjar", "Pahrudin", NULL };
+	const char * authors [] = { "Teguh Ginanjar", "Pahrudin", "Lemmy Kilmister", "oppo", NULL };
 	GtkWidget * dialog = gtk_about_dialog_new ();
 	//GdkPixbuf * logo = gdk_pixbuf_new_from_file ("./images/pic.png", NULL);
 	gtk_about_dialog_set_copyright (GTK_ABOUT_DIALOG (dialog), "(C) Delameta Bilano, 2013");
@@ -23,7 +23,7 @@ GtkWidget *
 create_window (void)
 {
 	GtkWidget * w = gtk_window_new (GTK_WINDOW_TOPLEVEL);
-	gtk_window_set_default_size (GTK_WINDOW (w), 400, 200);
+	gtk_window_set_default_size (GTK_WINDOW (w), -1, -1);
 	
 	
 	GtkWidget * mbar = gtk_menu_bar_new ();
@@ -103,7 +103,7 @@ create_window (void)
 
 	GtkWidget * boxh = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
 
-	gtk_box_pack_start (GTK_BOX (mbox), boxh, FALSE, TRUE, 5);
+	gtk_box_pack_start (GTK_BOX (contenbox), boxh, FALSE, TRUE, 5);
 	
 	GtkWidget * combo1 = gtk_combo_box_text_new ();
 	GtkWidget * combo2 = gtk_combo_box_text_new ();
@@ -127,8 +127,42 @@ create_window (void)
 	gtk_box_pack_start (GTK_BOX (boxh), combo3, TRUE, TRUE, 0);
 
 
+	GtkWidget * g = gtk_grid_new ();
+	
+
+	GtkWidget * btn[6] ;
+	
+	int i = 0;
+	const char * btnstr [] = {"cut paper", "print text",  "print image", "ch font size", "clear", "feed", NULL};
+	
+	for (i=0; i<6; i++) {
+		
+		btn[i] = gtk_button_new_with_label (btnstr[i]); 
+		
+	}
+	
+	gtk_grid_attach (GTK_GRID (g), btn[0], 0, 0, 1, 1);
+	gtk_grid_attach (GTK_GRID (g), btn[1], 1, 0, 1, 1);
+	gtk_grid_attach (GTK_GRID (g), btn[2], 2, 0, 1, 1);
+	
+	
+	gtk_grid_attach (GTK_GRID (g), btn[3], 0, 1, 1, 1);
+	gtk_grid_attach (GTK_GRID (g), btn[4], 1, 1, 1, 1);
+	gtk_grid_attach (GTK_GRID (g), btn[5], 2, 1, 1, 1);
+	
+	
+	gtk_grid_set_row_spacing (GTK_GRID (g), 5);
+	gtk_grid_set_column_spacing (GTK_GRID (g), 5);
+	
+	
+	
+	gtk_box_pack_start (GTK_BOX (contenbox), g, TRUE,  TRUE, 0);
+	
+	gtk_widget_show_all (contenbox);
+
 	gtk_container_set_border_width (GTK_CONTAINER (w), 5);
 
+	
 
 	return w;
 }
