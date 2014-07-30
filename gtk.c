@@ -59,7 +59,7 @@ create_window (void)
 	itemquit = gtk_menu_item_new_with_label ("Quit");
 	
 	itemabout = gtk_menu_item_new_with_label ("About");
-	itemedit = gtk_menu_item_new_with_label ("Help");
+	itemedit = gtk_menu_item_new_with_label ("Edit");
 	
 	
 	gtk_menu_item_set_submenu (GTK_MENU_ITEM (file), subfile);
@@ -100,6 +100,36 @@ create_window (void)
 	g_signal_connect (w, "destroy", G_CALLBACK (gtk_main_quit), NULL);
 	
 	
+
+	GtkWidget * boxh = gtk_box_new (GTK_ORIENTATION_HORIZONTAL, 10);
+
+	gtk_box_pack_start (GTK_BOX (mbox), boxh, FALSE, TRUE, 5);
+	
+	GtkWidget * combo1 = gtk_combo_box_text_new ();
+	GtkWidget * combo2 = gtk_combo_box_text_new ();
+	GtkWidget * combo3 = gtk_combo_box_text_new ();
+	
+	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo1), "ch combo1");
+	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo2), "ch combo2");
+	gtk_combo_box_text_append_text (GTK_COMBO_BOX_TEXT (combo3), "ch combo3");
+	
+	
+	
+	
+	gtk_combo_box_set_active (GTK_COMBO_BOX (combo1), 0);
+	gtk_combo_box_set_active (GTK_COMBO_BOX (combo2), 0);
+	gtk_combo_box_set_active (GTK_COMBO_BOX (combo3), 0);
+	
+	
+	
+	gtk_box_pack_start (GTK_BOX (boxh), combo1, TRUE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX (boxh), combo2, TRUE, TRUE, 0);
+	gtk_box_pack_start (GTK_BOX (boxh), combo3, TRUE, TRUE, 0);
+
+
+	gtk_container_set_border_width (GTK_CONTAINER (w), 5);
+
+
 	return w;
 }
 
@@ -115,4 +145,4 @@ main (int argc, char ** argv)
 	
 	gtk_main ();
 	return 0;
-}j
+}

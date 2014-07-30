@@ -3,7 +3,8 @@
 #include <stdlib.h>
 
 
-void * thr_func_a (void * args)
+void * 
+thr_func_a (void * args)
 {
   int x;
   for (x=0; x<10; x++) 
@@ -12,7 +13,8 @@ void * thr_func_a (void * args)
   return NULL;
 }
 
-void * thr_func_b (void * args)
+void * 
+thr_func_b (void * args)
 { 
   int x;
   for (x=0; x<50; x++) 
@@ -21,8 +23,10 @@ void * thr_func_b (void * args)
   return NULL;
 }
 
-int main (int argc, char ** argv)
+int 
+main (int argc, char ** argv)
 {
+
   pthread_t thr_a, thr_b;
   pthread_create (&thr_a, NULL, thr_func_a, NULL);
   pthread_create (&thr_b, NULL, thr_func_b, NULL);
