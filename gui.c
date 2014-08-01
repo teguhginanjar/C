@@ -135,7 +135,7 @@ create_window (void)
 	GtkWidget * btn[6] ;
 	
 	int i = 0;
-	const char * btnstr [] = {"cut paper", "print text",  "print image", "ch font size", "clear", "feed", NULL};
+	const char * btnstr [] = {"cut paper", "ch font size", "clear", "feed" , "print image", "print text",  NULL};
 	
 	for (i=0; i<6; i++) {
 		
@@ -144,11 +144,11 @@ create_window (void)
 	}
 	
 	gtk_grid_attach (GTK_GRID (g), btn[0], 0, 0, 1, 1);
-	gtk_grid_attach (GTK_GRID (g), btn[1], 1, 0, 1, 1);
-	gtk_grid_attach (GTK_GRID (g), btn[2], 2, 0, 1, 1);
+	gtk_grid_attach (GTK_GRID (g), btn[1], 0, 1, 1, 1);
+	gtk_grid_attach (GTK_GRID (g), btn[2], 0, 2, 1, 1);
 	
 	
-	gtk_grid_attach (GTK_GRID (g), btn[3], 0, 1, 1, 1);
+	gtk_grid_attach (GTK_GRID (g), btn[3], 0, 3, 1, 1);
 	gtk_grid_attach (GTK_GRID (g), btn[4], 1, 1, 1, 1);
 	gtk_grid_attach (GTK_GRID (g), btn[5], 2, 1, 1, 1);
 	
