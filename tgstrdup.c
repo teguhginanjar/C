@@ -2,7 +2,12 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include <stdarg.h>
+#include <string.h>
+#include <unistd.h>
 
+
+// TODO :: formatted %x %d %s etc, on tgstrdup 
 
 char * 
 tgstrdup (const char * fmt, ...)
@@ -14,8 +19,12 @@ tgstrdup (const char * fmt, ...)
 	
 	if ((p=malloc (size)) == NULL) return NULL;
 	
+	int d;
+	char c, *s;
+
 	while (1)	{
 		va_start (ap, fmt);
+		
 		n = vsnprintf (p, size, fmt, ap);
 		va_end(ap);
 		if (n>-1 && n < size) return p;
@@ -36,12 +45,13 @@ int main ()
 	printf ("%s", msg);
 	free (msg);
 	
+	/*
 	char sentence [] = "abcdef 7686  years is my age ";
 	char str [20];
 	int i = 0;
 
 	sscanf (sentence, "%s  %d", str, &i);
 	printf ("%s %i\n", str, i);
-
+*/
 	return 0;
 }
