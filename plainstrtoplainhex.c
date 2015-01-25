@@ -21,7 +21,8 @@ tohex (char h)
 }
 
 
-void plainStrtoPlainByte (unsigned char res[], char * str)
+static void 
+plainStrtoPlainByte (unsigned char res[], char * str)
 {
 	unsigned char bytes[strlen (str)];
 	unsigned char ret[(strlen (str) ) / 2];
